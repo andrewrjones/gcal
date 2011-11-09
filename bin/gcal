@@ -19,7 +19,7 @@ unless (@ARGV) {
     Getopt::Std::version_mess( '', 'main' );
     Getopt::Std::help_mess( '', 'main' );
 
-    #exit 0;
+    exit 0;
 }
 
 # run
