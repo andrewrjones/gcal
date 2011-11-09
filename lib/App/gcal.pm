@@ -7,6 +7,14 @@ package App::gcal;
 
 sub run {
     my @args = @_;
+    
+    # loop over args
+    
+    # if file, open and parse with Data::ICal
+    
+    # if not, try and parse with ICal::QuickAdd
+    
+    # if success, use Net::Google::Calendar to save
 }
 
 =head1 DESCRIPTION
