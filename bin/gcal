@@ -1,0 +1,41 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+
+use Getopt::Std;
+$Getopt::Std::STANDARD_HELP_VERSION = 1;
+
+use App::gcal;
+$main::VERSION = $App::gcal::VERSION;
+
+# PODNAME:  gcal
+# ABSTRACT: Command Line Interface interface to Google Calendar.
+
+# init Getopt::Std
+getopts('');
+
+# need at least one argument
+unless( @ARGV ){
+    Getopt::Std::version_mess('','main');
+    Getopt::Std::help_mess('','main');
+    #exit 0;
+}
+
+# run
+App::gcal::run(@ARGV);
+
+sub HELP_MESSAGE {
+    my $fh = shift;
+    print $fh "\nUsage: $0 [events.ical, 'tomorrow at noon. Lunch with Bob', ...]\n";
+}
+
+sub VERSION_MESSAGE {
+    my $fh = shift;
+    print $fh "$0 version $main::VERSION\n";
+}
+
+=head1 OVERVIEW
+
+For help with App::gcal, run "gcal -h".
+
+=cut
