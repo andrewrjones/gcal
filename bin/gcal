@@ -15,9 +15,10 @@ $main::VERSION = $App::gcal::VERSION;
 getopts('');
 
 # need at least one argument
-unless( @ARGV ){
-    Getopt::Std::version_mess('','main');
-    Getopt::Std::help_mess('','main');
+unless (@ARGV) {
+    Getopt::Std::version_mess( '', 'main' );
+    Getopt::Std::help_mess( '', 'main' );
+
     #exit 0;
 }
 
@@ -26,7 +27,8 @@ App::gcal::run(@ARGV);
 
 sub HELP_MESSAGE {
     my $fh = shift;
-    print $fh "\nUsage: $0 [events.ical, 'tomorrow at noon. Lunch with Bob', ...]\n";
+    print $fh
+      "\nUsage: $0 [events.ical, 'tomorrow at noon. Lunch with Bob', ...]\n";
 }
 
 sub VERSION_MESSAGE {
