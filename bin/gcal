@@ -36,6 +36,6 @@ sub VERSION_MESSAGE {
 
 =head1 OVERVIEW
 
-For help with App::gcal, run "gcal -h".
+For help with App::gcal, run "gcal --help".
 
 =cut
