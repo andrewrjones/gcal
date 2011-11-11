@@ -64,10 +64,14 @@ sub _save_to_gcal {
     my ($cal) = @_;
 
     unless ($gcal) {
-        $gcal = Net::Google::Calendar->new;
 
-        # TODO: load from .netrc, or similar
-        $gcal->login( '', '' );
+        # get login and password from .netrc
+        require Net::Netrc;
+        my $netrc = Net::Netrc->lookup('google.com');
+
+        # login
+        $gcal = Net::Google::Calendar->new;
+        $gcal->login( $netrc->login, $netrc->password );
     }
 
     for my $entry ( @{ $cal->entries } ) {
