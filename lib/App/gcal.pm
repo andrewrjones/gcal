@@ -9,8 +9,6 @@ use Net::Google::Calendar;
 use Net::Google::Calendar::Entry;
 use DateTime::Format::ICal;
 
-use Smart::Comments;
-
 # ABSTRACT: Command Line Interface interface to Google Calendar.
 
 our $gcal;
@@ -57,7 +55,10 @@ sub _process_file {
 sub _process_text {
     my ($text) = @_;
 
-    # TODO
+    require ICal::QuickAdd;
+
+    my $iqa = ICal::QuickAdd->new($text);
+    return $iqa->as_ical;
 }
 
 sub _save_to_gcal {
