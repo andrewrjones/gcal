@@ -55,10 +55,20 @@ sub _process_file {
 sub _process_text {
     my ($text) = @_;
 
-    require ICal::QuickAdd;
+    my $error_msg = 'error parsing text';
 
-    my $iqa = ICal::QuickAdd->new($text);
-    return $iqa->as_ical;
+    unless ($text) {
+        return _error($error_msg);
+    }
+
+    require ICal::QuickAdd;
+    my $iqa = ICal::QuickAdd->new($text)->as_ical;
+
+    unless ( @{ $iqa->entries }[0]->property('summary')->[0]->value ) {
+        return _error($error_msg);
+    }
+
+    return $iqa;
 }
 
 # save event to Google Calendar
