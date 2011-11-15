@@ -77,26 +77,33 @@ sub _save_to_gcal {
     for my $entry ( @{ $cal->entries } ) {
 
         # create gcal event
-        # TODO: extract & test
-        my $event = Net::Google::Calendar::Entry->new();
-
-        $event->title( $entry->property('summary')->[0]->value );
-        $event->content( $entry->property('description')->[0]->value );
-        $event->location( $entry->property('location')->[0]->value );
-        $event->when(
-            DateTime::Format::ICal->parse_datetime(
-                $entry->property('dtstart')->[0]->value
-            ),
-            DateTime::Format::ICal->parse_datetime(
-                $entry->property('dtend')->[0]->value
-            )
-        );
-        $event->status('confirmed');
+        my $event = _create_new_gcal_event($entry);
 
         # save
         my $tmp = $gcal->add_entry($event);
         die "Couldn't add event: $@\n" unless defined $tmp;
     }
+}
+
+sub _create_new_gcal_event {
+    my ($entry) = @_;
+
+    my $event = Net::Google::Calendar::Entry->new();
+
+    $event->title( $entry->property('summary')->[0]->value );
+    $event->content( $entry->property('description')->[0]->value );
+    $event->location( $entry->property('location')->[0]->value );
+    $event->when(
+        DateTime::Format::ICal->parse_datetime(
+            $entry->property('dtstart')->[0]->value
+        ),
+        DateTime::Format::ICal->parse_datetime(
+            $entry->property('dtend')->[0]->value
+        )
+    );
+    $event->status('confirmed');
+
+    return $event;
 }
 
 sub _error {
