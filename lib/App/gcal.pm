@@ -5,14 +5,12 @@ package App::gcal;
 
 use Class::ReturnValue;
 use Data::ICal;
-use Net::Google::Calendar;
-use Net::Google::Calendar::Entry;
-use DateTime::Format::ICal;
 
 # ABSTRACT: Command Line Interface interface to Google Calendar.
 
 our $gcal;
 
+# entry point
 sub run {
     my (@args) = @_;
 
@@ -41,6 +39,7 @@ sub run {
     }
 }
 
+# process an ics file
 sub _process_file {
     my ($file) = @_;
 
@@ -52,6 +51,7 @@ sub _process_file {
     return $calendar;
 }
 
+# process a text event
 sub _process_text {
     my ($text) = @_;
 
@@ -61,6 +61,7 @@ sub _process_text {
     return $iqa->as_ical;
 }
 
+# save event to Google Calendar
 sub _save_to_gcal {
     my ($cal) = @_;
 
@@ -71,6 +72,7 @@ sub _save_to_gcal {
         my $netrc = Net::Netrc->lookup('google.com');
 
         # login
+        require Net::Google::Calendar;
         $gcal = Net::Google::Calendar->new;
         $gcal->login( $netrc->login, $netrc->password );
     }
@@ -86,8 +88,12 @@ sub _save_to_gcal {
     }
 }
 
+# converts Data::ICal to Net::Google::Calendar::Entry
 sub _create_new_gcal_event {
     my ($entry) = @_;
+
+    require Net::Google::Calendar::Entry;
+    require DateTime::Format::ICal;
 
     my $event = Net::Google::Calendar::Entry->new();
 
@@ -107,6 +113,7 @@ sub _create_new_gcal_event {
     return $event;
 }
 
+# return an error
 sub _error {
     my $msg = shift;
 
