@@ -9,7 +9,7 @@ use App::gcal;
 $main::VERSION = $App::gcal::VERSION;
 
 # PODNAME:  gcal
-# ABSTRACT: Command Line Interface interface to Google Calendar.
+# ABSTRACT: Command Line Interface to Google Calendar.
 
 # init Getopt::Std
 getopts('');
