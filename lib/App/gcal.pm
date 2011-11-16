@@ -132,11 +132,27 @@ sub _error {
     return $ret;
 }
 
-=head1 DESCRIPTION
+=head1 SYNOPSIS
 
 The C<gcal> command provides a quick and easy interface to Google Calendar from the command line.
 
-=head1 TODO
+=head1 USAGE
+
+  gcal --help
+  
+  gcal [events.ical, 'tomorrow at noon. Lunch with Bob', ...]
+
+=head1 DESCRIPTION
+
+Before using the C<gcal> command, you need to provide your Google credentials in your C<.netrc> file, for the C<google.com> machine. For example:
+
+  machine google.com
+  login bob
+  password 1234
+
+You can then pass one or more C<.ics> files to the C<gcal> command and it will be added to your Google Calendar.
+
+You can also pass one or more strings to the C<gcal> command, which will attempt to parse it and create a new event. It uses L<ICal::QuickAdd> to parse, so has the same functionality and limitations.
 
 =cut
 
