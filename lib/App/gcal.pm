@@ -10,6 +10,8 @@ use Data::ICal;
 
 our $gcal;
 
+=for Pod::Coverage run
+=cut
 # entry point
 sub run {
     my (@args) = @_;
