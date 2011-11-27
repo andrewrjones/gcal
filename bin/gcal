@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!perl
 use warnings;
 use strict;
 
@@ -9,7 +9,7 @@ use App::gcal;
 $main::VERSION = $App::gcal::VERSION;
 
 # PODNAME:  gcal
-# ABSTRACT: Command Line Interface interface to Google Calendar.
+# ABSTRACT: Command Line Interface to Google Calendar.
 
 # init Getopt::Std
 getopts('');
@@ -38,6 +38,8 @@ sub VERSION_MESSAGE {
 
 =head1 OVERVIEW
 
-For help with App::gcal, run "gcal --help".
+For usage, run "gcal --help".
+
+See L<App::gcal> for more information.
 
 =cut
