@@ -12,6 +12,7 @@ our $gcal;
 
 =for Pod::Coverage run
 =cut
+
 # entry point
 sub run {
     my (@args) = @_;
@@ -147,7 +148,7 @@ The C<gcal> command provides a quick and easy interface to Google Calendar from 
 =head1 USAGE
 
   gcal --help
-  
+
   gcal [events.ical, 'tomorrow at noon. Lunch with Bob', ...]
 
 =head1 DESCRIPTION
