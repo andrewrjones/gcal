@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 16;
+use Test::More tests => 18;
 use FindBin qw($Bin);
 
 BEGIN { use_ok('App::gcal'); }
@@ -35,6 +35,10 @@ my $time = DateTime::Format::ICal->parse_datetime(
     @{ $iqa->entries }[0]->property('dtstart')->[0]->value );
 is( $time->datetime, '1976-03-31T12:34:00' );
 is( $time->datetime, '1976-03-31T12:34:00' );
+
+$gcal_event = App::gcal::_create_new_gcal_event( @{ $iqa->entries }[0] );
+isa_ok( $gcal_event, 'Net::Google::Calendar::Entry' );
+is( $gcal_event->title, 'Lunch with Bob' );
 
 $quick_add_text = '';
 $iqa            = App::gcal::_process_text($quick_add_text);

@@ -108,8 +108,6 @@ sub _create_new_gcal_event {
     my $event = Net::Google::Calendar::Entry->new();
 
     $event->title( $entry->property('summary')->[0]->value );
-    $event->content( $entry->property('description')->[0]->value );
-    $event->location( $entry->property('location')->[0]->value );
     $event->when(
         DateTime::Format::ICal->parse_datetime(
             $entry->property('dtstart')->[0]->value
@@ -119,6 +117,14 @@ sub _create_new_gcal_event {
         )
     );
     $event->status('confirmed');
+
+    # optional
+    if ( $entry->property('description') ) {
+        $event->content( $entry->property('description')->[0]->value );
+    }
+    if ( $entry->property('location') ) {
+        $event->location( $entry->property('location')->[0]->value );
+    }
 
     return $event;
 }
