@@ -14,8 +14,11 @@ $main::VERSION = $App::gcal::VERSION;
 # init Getopt::Std
 getopts('');
 
+# support wildcards on Windows
+my @args = ($^O eq 'MSWin32') ? map { glob } @ARGV : @ARGV;
+
 # need at least one argument
-unless (@ARGV) {
+unless (@args) {
     Getopt::Std::version_mess( '', 'main' );
     Getopt::Std::help_mess( '', 'main' );
 
@@ -23,7 +26,7 @@ unless (@ARGV) {
 }
 
 # run
-App::gcal::run(@ARGV);
+App::gcal::run(@args);
 
 sub HELP_MESSAGE {
     my $fh = shift;
