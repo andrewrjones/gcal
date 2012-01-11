@@ -1,5 +1,6 @@
 {{$NEXT}}
     Support wildcards on Windows
+    Better error message if we can't find credentials
 
 1.113460  2011-12-12 13:49:09 Europe/London
     Don't die if event does not have a description or location
