@@ -34,9 +34,7 @@ sub run {
         }
 
         if ($cal) {
-            unless ( my $return = _save_to_gcal($cal) ) {
-                print STDERR $return->error_message . "\n";
-            }
+            _save_to_gcal($cal);
         }
         else {
             print STDERR $cal->error_message . "\n";
@@ -87,8 +85,7 @@ sub _save_to_gcal {
         my $netrc = Net::Netrc->lookup('google.com');
 
         unless ($netrc) {
-            return _error(
-                'Error. Could not find your credentials in your .netrc file');
+            die('Error. Could not find your credentials in your .netrc file');
         }
 
         # login
@@ -160,11 +157,13 @@ The C<gcal> command provides a quick and easy interface to Google Calendar from 
 
 =head1 DESCRIPTION
 
-Before using the C<gcal> command, you need to provide your Google credentials in your C<.netrc> file, for the C<google.com> machine. For example:
+Before using the C<gcal> command, you need to provide your Google credentials in your C<~.netrc> file, for the C<google.com> machine. For example:
 
   machine google.com
   login bob
   password 1234
+
+NOTE: On Windows, your C<.netrc> file is at C<%HOME%.netrc>.
 
 You can then pass one or more C<.ics> files to the C<gcal> command and it will be added to your Google Calendar.
 
