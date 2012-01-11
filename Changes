@@ -1,4 +1,6 @@
 {{$NEXT}}
+
+1.120110  2012-01-11 12:43:55 Europe/London
     Support wildcards on Windows
     Better error message if we can't find credentials
 
