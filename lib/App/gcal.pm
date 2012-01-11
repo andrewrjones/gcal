@@ -34,7 +34,9 @@ sub run {
         }
 
         if ($cal) {
-            _save_to_gcal($cal);
+            unless ( my $return = _save_to_gcal($cal) ) {
+                print STDERR $return->error_message . "\n";
+            }
         }
         else {
             print STDERR $cal->error_message . "\n";
@@ -83,6 +85,11 @@ sub _save_to_gcal {
         # get login and password from .netrc
         require Net::Netrc;
         my $netrc = Net::Netrc->lookup('google.com');
+
+        unless ($netrc) {
+            return _error(
+                'Error. Could not find your credentials in your .netrc file');
+        }
 
         # login
         require Net::Google::Calendar;
