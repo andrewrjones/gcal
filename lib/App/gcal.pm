@@ -8,17 +8,17 @@ use Data::ICal;
 
 # ABSTRACT: Command Line Interface interface to Google Calendar.
 
-our $gcal;
+my $gcal;
 
 =for Pod::Coverage run
 =cut
 
 # entry point
 sub run {
-    my (@args) = @_;
+    my ( $args, $username, $password ) = @_;
 
     # loop over args
-    for my $arg (@args) {
+    for my $arg (@$args) {
 
         my $cal;
         if ( ( -e $arg ) && ( -r $arg ) ) {
@@ -34,7 +34,7 @@ sub run {
         }
 
         if ($cal) {
-            _save_to_gcal($cal);
+            _save_to_gcal( $cal, $username, $password );
         }
         else {
             print STDERR $cal->error_message . "\n";
@@ -76,22 +76,30 @@ sub _process_text {
 
 # save event to Google Calendar
 sub _save_to_gcal {
-    my ($cal) = @_;
+    my ( $cal, $username, $password ) = @_;
 
     unless ($gcal) {
 
-        # get login and password from .netrc
-        require Net::Netrc;
-        my $netrc = Net::Netrc->lookup('google.com');
+        unless ( $username && $password ) {
 
-        unless ($netrc) {
-            die('Error. Could not find your credentials in your .netrc file');
+            # get login and password from .netrc
+            require Net::Netrc;
+            my $netrc = Net::Netrc->lookup('google.com');
+
+            unless ($netrc) {
+                die(
+                    'Error. Could not find your credentials in your .netrc file'
+                );
+            }
+
+            $username = $netrc->login;
+            $password = $netrc->password;
         }
 
         # login
         require Net::Google::Calendar;
         $gcal = Net::Google::Calendar->new;
-        $gcal->login( $netrc->login, $netrc->password );
+        $gcal->login( $username, $password );
     }
 
     for my $entry ( @{ $cal->entries } ) {
@@ -155,15 +163,23 @@ The C<gcal> command provides a quick and easy interface to Google Calendar from 
 
   gcal [events.ical, 'tomorrow at noon. Lunch with Bob', ...]
 
+  gcal --username="bill" --password="1234" [events.ical, 'tomorrow at noon. Lunch with Bob', ...]
+
 =head1 DESCRIPTION
 
-Before using the C<gcal> command, you need to provide your Google credentials in your C<~.netrc> file, for the C<google.com> machine. For example:
+Before using the C<gcal> command, you need to provide your Google credentials. The most convenient way to do this is by using your C<~.netrc> file and supplying credentials for the C<google.com> machine. For example:
 
   machine google.com
-  login bob
+  login bill
   password 1234
 
 NOTE: On Windows, your C<.netrc> file is at C<%HOME%.netrc>.
+
+NOTE 2: On Unix, ensure your C<~.netrc> file has the permissions set to 600.
+
+Alternatively, you can pass the username and password as a parameter to C<gcal>, as follows:
+
+  gcal --username="bill" --password="1234"
 
 You can then pass one or more C<.ics> files to the C<gcal> command and it will be added to your Google Calendar.
 

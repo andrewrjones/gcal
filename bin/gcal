@@ -2,8 +2,7 @@
 use warnings;
 use strict;
 
-use Getopt::Std;
-$Getopt::Std::STANDARD_HELP_VERSION = 1;
+use Getopt::Long;
 
 use App::gcal;
 $main::VERSION = $App::gcal::VERSION;
@@ -11,37 +10,51 @@ $main::VERSION = $App::gcal::VERSION;
 # PODNAME:  gcal
 # ABSTRACT: Command Line Interface to Google Calendar.
 
-# init Getopt::Std
-getopts('');
+my $help_message =
+  "Usage: $0 [events.ical, 'tomorrow at noon. Lunch with Bob', ...]\n";
+my $version_message = "$0 version $main::VERSION\n";
+
+# init Getopt::Long
+my $username;
+my $password;
+my $version;
+my $help;
+GetOptions(
+    'username=s' => \$username,
+    'password=s' => \$password,
+    'help'       => \$help,
+    'version'    => \$version,
+);
+
+if ($help) {
+    print $help_message;
+
+    exit 0;
+}
+if ($version) {
+    print $version_message;
+
+    exit 0;
+}
 
 # support wildcards on Windows
-my @args = ($^O eq 'MSWin32') ? map { glob } @ARGV : @ARGV;
+my @args = ( $^O eq 'MSWin32' ) ? map { glob } @ARGV : @ARGV;
 
 # need at least one argument
 unless (@args) {
-    Getopt::Std::version_mess( '', 'main' );
-    Getopt::Std::help_mess( '', 'main' );
+    print $version_message;
+    print "\n";
+    print $help_message;
 
     exit 0;
 }
 
 # run
-App::gcal::run(@args);
-
-sub HELP_MESSAGE {
-    my $fh = shift;
-    print $fh
-      "\nUsage: $0 [events.ical, 'tomorrow at noon. Lunch with Bob', ...]\n";
-}
-
-sub VERSION_MESSAGE {
-    my $fh = shift;
-    print $fh "$0 version $main::VERSION\n";
-}
+App::gcal::run( \@args, $username, $password );
 
 =head1 OVERVIEW
 
-For usage, run "gcal --help".
+For usage, run C<gcal --help>.
 
 See L<App::gcal> for more information.
 
