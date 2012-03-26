@@ -155,10 +155,6 @@ sub _error {
 
 =head1 SYNOPSIS
 
-The C<gcal> command provides a quick and easy interface to Google Calendar from the command line.
-
-=head1 USAGE
-
   gcal --help
 
   gcal [events.ical, 'tomorrow at noon. Lunch with Bob', ...]
@@ -166,6 +162,8 @@ The C<gcal> command provides a quick and easy interface to Google Calendar from 
   gcal --username="bill" --password="1234" [events.ical, 'tomorrow at noon. Lunch with Bob', ...]
 
 =head1 DESCRIPTION
+
+The C<gcal> command provides a quick and easy interface to Google Calendar from the command line.
 
 Before using the C<gcal> command, you need to provide your Google credentials. The most convenient way to do this is by using your C<~.netrc> file and supplying credentials for the C<google.com> machine. For example:
 
