@@ -183,6 +183,10 @@ You can then pass one or more C<.ics> files to the C<gcal> command and it will b
 
 You can also pass one or more strings to the C<gcal> command, which will attempt to parse it and create a new event. It uses L<ICal::QuickAdd> to parse, so has the same functionality and limitations.
 
+=head2 Using Google's Two Factor Authentication
+
+If you are using L<Google's two factor authentication|http://googleblog.blogspot.co.uk/2011/02/advanced-sign-in-security-for-your.html> (and you L<really should be|http://www.codinghorror.com/blog/2012/04/make-your-email-hacker-proof.html>), you will need to generate a new application-specific password for C<gcal>. Save that in your C<.netrc> file and use C<gcal> as normal.
+
 =cut
 
 1;
