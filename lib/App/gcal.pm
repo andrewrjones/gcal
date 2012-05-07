@@ -5,8 +5,12 @@ package App::gcal;
 
 use Class::ReturnValue;
 use Data::ICal;
+use DateTime::TimeZone;
 
 # ABSTRACT: Command Line Interface interface to Google Calendar.
+
+# cache the timezone lookup
+my $localTZ = DateTime::TimeZone->new( name => 'local' );
 
 my $gcal;
 
@@ -123,14 +127,16 @@ sub _create_new_gcal_event {
     my $event = Net::Google::Calendar::Entry->new();
 
     $event->title( $entry->property('summary')->[0]->value );
-    $event->when(
-        DateTime::Format::ICal->parse_datetime(
-            $entry->property('dtstart')->[0]->value
-        ),
-        DateTime::Format::ICal->parse_datetime(
-            $entry->property('dtend')->[0]->value
-        )
-    );
+
+    # ensure the times are in the local timezone
+    my $dtstart = DateTime::Format::ICal->parse_datetime(
+        $entry->property('dtstart')->[0]->value );
+    $dtstart->set_time_zone($localTZ);
+    my $dtend = DateTime::Format::ICal->parse_datetime(
+        $entry->property('dtend')->[0]->value );
+    $dtend->set_time_zone($localTZ);
+    $event->when( $dtstart, $dtend );
+
     $event->status('confirmed');
 
     # optional

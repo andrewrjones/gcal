@@ -5,7 +5,7 @@ use strict;
 use Getopt::Long;
 
 use App::gcal;
-$main::VERSION = $App::gcal::VERSION;
+$main::VERSION = $App::gcal::VERSION || 0;
 
 # PODNAME:  gcal
 # ABSTRACT: Command Line Interface to Google Calendar.
