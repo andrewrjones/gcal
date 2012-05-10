@@ -68,14 +68,14 @@ sub _process_text {
         return _error($error_msg);
     }
 
-    require ICal::QuickAdd;
-    my $iqa = ICal::QuickAdd->new($text)->as_ical;
+    require ICal::Format::Natural;
+    my $calendar = ICal::Format::Natural::ical_format_natural($text);
 
-    unless ( @{ $iqa->entries }[0]->property('summary')->[0]->value ) {
+    unless ( $calendar->isa('Data::ICal') ) {
         return _error($error_msg);
     }
 
-    return $iqa;
+    return $calendar;
 }
 
 # save event to Google Calendar
