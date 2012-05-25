@@ -1,4 +1,5 @@
 {{$NEXT}}
+    Don't need to show the full path to gcal in usage info.
 
 1.121310  2012-05-10 19:42:27 Europe/London
     Use ICal::Format::Natural to parse text.

@@ -2,6 +2,7 @@
 use warnings;
 use strict;
 
+use File::Basename qw/basename/;
 use Getopt::Long;
 
 use App::gcal;
@@ -10,9 +11,10 @@ $main::VERSION = $App::gcal::VERSION || 0;
 # PODNAME:  gcal
 # ABSTRACT: Command Line Interface to Google Calendar.
 
+my $scriptname = basename($0);
 my $help_message =
-  "Usage: $0 [events.ical, 'tomorrow at noon. Lunch with Bob', ...]\n";
-my $version_message = "$0 version $main::VERSION\n";
+  "Usage: $scriptname [events.ical, 'tomorrow at noon. Lunch with Bob', ...]\n";
+my $version_message = "$scriptname version $main::VERSION\n";
 
 # init Getopt::Long
 my $username;
