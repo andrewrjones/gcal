@@ -12,3 +12,8 @@ INSTALL
 
     curl -L http://cpanmin.us | perl - --sudo App::cpanminus
     cpanm App::gcal
+
+Build status
+------------
+
+[![Build Status](https://secure.travis-ci.org/andrewrjones/gcal.png)](http://travis-ci.org/andrewrjones/gcal)
