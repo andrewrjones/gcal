@@ -1,5 +1,6 @@
 {{$NEXT}}
     Use SSL.
+    Correctly parse events with a duration but no end time.
 
 1.121460  2012-05-25 21:33:38 Europe/London
     Don't need to show the full path to gcal in usage info.
