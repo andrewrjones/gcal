@@ -132,10 +132,26 @@ sub _create_new_gcal_event {
     # ensure the times are in the local timezone
     my $dtstart = DateTime::Format::ICal->parse_datetime(
         $entry->property('dtstart')->[0]->value );
+
+    # TODO: check timezone isn't already set
     $dtstart->set_time_zone($localTZ);
-    my $dtend = DateTime::Format::ICal->parse_datetime(
-        $entry->property('dtend')->[0]->value );
-    $dtend->set_time_zone($localTZ);
+
+    my $dtend;
+    if ( $entry->property('dtend') ) {
+        $dtend = DateTime::Format::ICal->parse_datetime(
+            $entry->property('dtend')->[0]->value );
+
+        # TODO: check timezone isn't already set
+        $dtend->set_time_zone($localTZ);
+    }
+    elsif ( $entry->property('duration') ) {
+        my $dur = DateTime::Format::ICal->parse_duration(
+            $entry->property('duration')->[0]->value );
+        $dtend = $dtstart + $dur;
+    }
+    else {
+        die "Could not find an end time or duration for the event";
+    }
     $event->when( $dtstart, $dtend );
 
     $event->status('confirmed');

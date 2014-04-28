@@ -1,0 +1,493 @@
+BEGIN:VCALENDAR
+CALSCALE:GREGORIAN
+PRODID:-//Act//Data::ICal 0.16//EN
+VERSION:2.0
+X-WR-CALNAME:London Perl Workshop
+X-WR-TIMEZONE:Europe/London
+BEGIN:VTIMEZONE
+TZID:Europe/London
+X-LIC-LOCATION:Europe/London
+BEGIN:DAYLIGHT
+DTSTART:19700329T010000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+TZNAME:BST
+TZOFFSETFROM:+0000
+TZOFFSETTO:+0100
+END:DAYLIGHT
+BEGIN:STANDARD
+DTSTART:19701025T020000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+TZNAME:GMT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0000
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DESCRIPTION:Mark Keating says hello and welcomes everyone to the event.
+DTEND;TZID=Europe/London:20121124T093000
+DTSTART;TZID=Europe/London:20121124T092000
+LOCATION:Bytemark Theatre: L1 1
+SUMMARY:Opening Address
+UID:http://act.yapc.eu/lpw2012/event/1200
+URL:http://act.yapc.eu/lpw2012/event/1200
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Exonetric sponsors the morning coffee event
+DTEND;TZID=Europe/London:20121124T112000
+DTSTART;TZID=Europe/London:20121124T105000
+LOCATION:
+SUMMARY:Coffee Break
+UID:http://act.yapc.eu/lpw2012/event/1192
+URL:http://act.yapc.eu/lpw2012/event/1192
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Break for Lunch
+DTEND;TZID=Europe/London:20121124T141000
+DTSTART;TZID=Europe/London:20121124T131000
+LOCATION:
+SUMMARY:Lunch
+UID:http://act.yapc.eu/lpw2012/event/1190
+URL:http://act.yapc.eu/lpw2012/event/1190
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:The Lightning Talks - a hosted round of madness and often hilar
+ ity.
+DTEND;TZID=Europe/London:20121124T182500
+DTSTART;TZID=Europe/London:20121124T171000
+LOCATION:Bytemark Theatre: L1 1
+SUMMARY:Lightning Talks
+UID:http://act.yapc.eu/lpw2012/event/1194
+URL:http://act.yapc.eu/lpw2012/event/1194
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Mark Keating closes the 2012 LPW
+DTEND;TZID=Europe/London:20121124T183000
+DTSTART;TZID=Europe/London:20121124T182500
+LOCATION:Bytemark Theatre: L1 1
+SUMMARY:Closing Notes
+UID:http://act.yapc.eu/lpw2012/event/1191
+URL:http://act.yapc.eu/lpw2012/event/1191
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:The evening social event. Food sponsored by Net-a-Porter. Drink
+ s sponsored by antibodyMX\, Evozon\, Nestoria and Shadowcat Systems
+DTEND;TZID=Europe/London:20121124T233000
+DTSTART;TZID=Europe/London:20121124T190000
+LOCATION:
+SUMMARY:Social Event
+UID:http://act.yapc.eu/lpw2012/event/1193
+URL:http://act.yapc.eu/lpw2012/event/1193
+END:VEVENT
+BEGIN:VEVENT
+ATTENDEE:Aaron Crane
+ATTENDEE:osfameron
+ATTENDEE:Jess Robinson
+ATTENDEE:Mark Norman Francis
+ATTENDEE:Nigel Metheringham
+ATTENDEE:Michele Beltrame
+ATTENDEE:Peter Haworth
+ATTENDEE:fifi
+ATTENDEE:Colin Bradford
+ATTENDEE:Tomasz Czepiel
+ATTENDEE:Minty Walker
+ATTENDEE:James Aitken
+ATTENDEE:Tom Molesworth
+ATTENDEE:Dominic Humphries
+ATTENDEE:Jan Hartung
+ATTENDEE:Andrew Jones
+ATTENDEE:Tudor Constantin
+ATTENDEE:Mike Francis
+ATTENDEE:Johnathan Swan
+ATTENDEE:Mirela Iclodean
+ATTENDEE:Mohammad Anwar
+ATTENDEE:Andreea Stanciu
+ATTENDEE:Istvan Gal
+ATTENDEE:Anthony Lucas
+ATTENDEE:Alexandru Strajeriu
+ATTENDEE:Russell Wheeler
+ATTENDEE:Brad Macpherson
+ATTENDEE:Iain Campbell
+ATTENDEE:Ben Rogers
+ATTENDEE:Michael Woods
+ATTENDEE:Diana Nutu
+ATTENDEE:Diana Donca
+ATTENDEE:Jonas Weismueller
+ATTENDEE:Pete Barlow
+ATTENDEE:Mircea Patachi
+ATTENDEE:kevin mulholland
+COMMENT:36 attendees
+DESCRIPTION:In this talk\, I will talk about why log files are horrible\, l
+ ogging log lines\, and more structured performance metrics from large scal
+ e production applications as well as building reliable\, scaleable and fle
+ xible large scale software systems in multiple languages.\n\nWhy (almost) 
+ all log formats are horrible will be explained\, and why JSON is a good so
+ lution for logging will be discussed\, along with a number of message queu
+ ing\, middleware and network transport technologies\, including STOMP\, AM
+ QP and ZeroMQ.\n\nThe Message::Passing framework will be introduced\, alon
+ g with the logstash.net project which the perl code is interoperable with.
+  These are pluggable frameworks in ruby/java/jruby and perl with pre-writt
+ en sets of inputs\, filters and outputs for many many different systems\, 
+ message formats and transports.\n\nThey were initially designed to be aggr
+ egators and filters of data for logging. However they are flexible enough 
+ to be used as part of your messaging middleware\, or even as a replacement
+  for centralised message queuing systems.\n\nYou can have your cake and ea
+ t it too - an architecture which is flexible\, extensible\, scaleable and 
+ distributed. Build discrete\, loosely coupled components which just pass m
+ essages to each other easily.\n\nIntegrate and interoperate with your exis
+ ting code and code bases easily\, consume from or publish to any existing 
+ message queue\, logging or performance metrics system you have installed.\
+ n\nSimple examples using common input and output classes will be demonstra
+ ted using the framework\, as will easily adding your own custom filters. A
+  number of common messaging middleware patterns will be shown to be trivia
+ l to implement.\n\nSome higher level use-cases will also be explored\, dem
+ onstrating log indexing in ElasticSearch and how to build a responsive pla
+ tform API using webhooks.\n\nInteroperability is also an important goal fo
+ r messaging middleware. The logstash.net project will be highlighted and w
+ e'll discuss crossing the single language barrier\, allowing us to have fu
+ ll integration between java\, ruby and perl components\, and to easily wri
+ te bindings into libraries we want to reuse in any of those languages.
+DTEND;TZID=Europe/London:20121124T150000
+DTSTART;TZID=Europe/London:20121124T141000
+LOCATION:Bytemark Theatre: L1 1
+ORGANIZER:Tomas Doran
+SUMMARY:Messaging\, interoperability and log aggregation - a new framework
+UID:http://act.yapc.eu/lpw2012/talk/4137
+URL:http://act.yapc.eu/lpw2012/talk/4137
+END:VEVENT
+BEGIN:VEVENT
+ATTENDEE:Nicholas Clark
+ATTENDEE:Aaron Crane
+ATTENDEE:David Cantrell
+ATTENDEE:Matthew Black
+ATTENDEE:Chad Hanna
+ATTENDEE:Michael Jemmeson
+ATTENDEE:Michele Beltrame
+ATTENDEE:Victor Churchill
+ATTENDEE:Peter Haworth
+ATTENDEE:Avi Greenbury
+ATTENDEE:Colin Campbell
+ATTENDEE:Tzctyapc
+ATTENDEE:lena-san
+ATTENDEE:Jason Clifford
+ATTENDEE:Dominic Humphries
+ATTENDEE:Tony Edwardson
+ATTENDEE:Jan Hartung
+ATTENDEE:Andrew Jones
+ATTENDEE:pozorvlak
+ATTENDEE:David Precious
+ATTENDEE:James Ronan
+ATTENDEE:Christian Karg
+ATTENDEE:Neil Bowers
+ATTENDEE:Andrew Todd
+ATTENDEE:Brad Haywood
+ATTENDEE:Graeme Hewson
+ATTENDEE:Ross Hayes
+ATTENDEE:Bianca Gutu
+ATTENDEE:Johnathan Swan
+ATTENDEE:pierre masci
+ATTENDEE:James Green
+ATTENDEE:Tudor Crisan
+ATTENDEE:Istvan Gal
+ATTENDEE:Alexandru Strajeriu
+ATTENDEE:Russell Wheeler
+ATTENDEE:Andy Jones
+ATTENDEE:Iain Campbell
+ATTENDEE:Merlyn Kline
+ATTENDEE:Ben Rogers
+ATTENDEE:Tony Bedford
+ATTENDEE:Florentina Borse
+ATTENDEE:Adela Codrea
+ATTENDEE:Dumitru Negrea
+ATTENDEE:Pete Barlow
+ATTENDEE:Johannes Flieger
+ATTENDEE:Pete Houston
+ATTENDEE:Tom Beresford
+ATTENDEE:Daniel De Ruvo
+ATTENDEE:Eduardo Pato Rodrigues
+ATTENDEE:David Escribano
+ATTENDEE:Thomas Adam
+ATTENDEE:Natalya Shynkaryova
+COMMENT:52 attendees
+DESCRIPTION:Lots of perl people think that they're doing unit testing\, bec
+ ause they test each module.  That is not unit testing.  Unit testing tests
+  each indivisible unit of functionality *in isolation*\, testing not just 
+ functions' return values for various arguments\, but also their interactio
+ ns with other parts of your application by mocking those other parts.  Uni
+ t testing makes tests far more useful as a debugging tool\, but also requi
+ res changing how you think about writing code. In this talk I'll show how 
+ you can make your code more debuggable with unit testing.
+DTEND;TZID=Europe/London:20121124T131000
+DTSTART;TZID=Europe/London:20121124T122000
+LOCATION:Bytemark Theatre: L1 1
+ORGANIZER:David Cantrell
+SUMMARY:Unit testing: you ain't doing it and you should
+UID:http://act.yapc.eu/lpw2012/talk/4366
+URL:http://act.yapc.eu/lpw2012/talk/4366
+END:VEVENT
+BEGIN:VEVENT
+ATTENDEE:Nicholas Clark
+ATTENDEE:Dave Cross
+ATTENDEE:Jess Robinson
+ATTENDEE:Chad Hanna
+ATTENDEE:Marco Fontani
+ATTENDEE:Michael Jemmeson
+ATTENDEE:Peter Haworth
+ATTENDEE:fifi
+ATTENDEE:Colin Bradford
+ATTENDEE:Peter Rabbitson
+ATTENDEE:Andrew Solomon
+ATTENDEE:Anthony Shaper
+ATTENDEE:Chris Jack
+ATTENDEE:Anatolie Mazur
+ATTENDEE:lena-san
+ATTENDEE:Andrew Jones
+ATTENDEE:Mike Francis
+ATTENDEE:Brad Haywood
+ATTENDEE:Graeme Hewson
+ATTENDEE:Johnathan Swan
+ATTENDEE:James Green
+ATTENDEE:Mirela Iclodean
+ATTENDEE:Richard Jelinek
+ATTENDEE:Istvan Gal
+ATTENDEE:Hugh Barnard
+ATTENDEE:Andy Jones
+ATTENDEE:Ben Rogers
+ATTENDEE:Michael Woods
+ATTENDEE:Amalia Pomian
+ATTENDEE:Diana Nutu
+ATTENDEE:Diana Donca
+ATTENDEE:Tom Beresford
+ATTENDEE:p artus
+ATTENDEE:suresh rayapalli
+ATTENDEE:Mircea Patachi
+ATTENDEE:Eduardo Pato Rodrigues
+ATTENDEE:Thomas Adam
+ATTENDEE:kevin mulholland
+ATTENDEE:John Goodchild
+COMMENT:39 attendees
+DESCRIPTION:A panel discussion on the current state of the jobs market for 
+ Perl\, ranging through everything from interviews\, tests and phone screen
+ s to how and where to recruit candidates.
+DTEND;TZID=Europe/London:20121124T170000
+DTSTART;TZID=Europe/London:20121124T161000
+LOCATION:Bytemark Theatre: L1 1
+ORGANIZER:Mike Whitaker
+SUMMARY:The state of the Perl jobs market II
+UID:http://act.yapc.eu/lpw2012/talk/4369
+URL:http://act.yapc.eu/lpw2012/talk/4369
+END:VEVENT
+BEGIN:VEVENT
+ATTENDEE:Nicholas Clark
+ATTENDEE:David Dorward
+ATTENDEE:Søren Lund
+ATTENDEE:Marco Fontani
+ATTENDEE:Nigel Metheringham
+ATTENDEE:Michele Beltrame
+ATTENDEE:Peter Haworth
+ATTENDEE:Colin Bradford
+ATTENDEE:Tomasz Czepiel
+ATTENDEE:Ulrich Habel
+ATTENDEE:lena-san
+ATTENDEE:Jan Hartung
+ATTENDEE:Andrew Jones
+ATTENDEE:James Ronan
+ATTENDEE:Andrew Todd
+ATTENDEE:Graeme Hewson
+ATTENDEE:Oleg Komarov
+ATTENDEE:anca grosan
+ATTENDEE:Andreea Stanciu
+ATTENDEE:Istvan Gal
+ATTENDEE:Brad Macpherson
+ATTENDEE:Florentina Borse
+ATTENDEE:Adela Codrea
+ATTENDEE:Raul Matei
+ATTENDEE:Dumitru Negrea
+ATTENDEE:Jonas Weismueller
+ATTENDEE:Pete Barlow
+ATTENDEE:Daniel De Ruvo
+ATTENDEE:kevin mulholland
+COMMENT:29 attendees
+DESCRIPTION:The system environments which are running in the data centers t
+ oday do have all different kinds of development servers\, staging servers\
+ , production serers\, qa servers and probably servers for customer tests. 
+ While the development guys are using continous integration build environme
+ nts and unit tests to check if everything is working\, the operations depa
+ rtments are often unable to deploy the software that has been successfully
+  built. \n\nThe reasons may vary\, however\, some problems have to be deal
+ t with all the time: automatic deployment and tracking dependencies. If yo
+ u need to deploy Perl software across different environments\, you want to
+  make sure that everything runs smoothly without interaction. The talks sh
+ ows some strategies how to deal with those kind of problems. It will show 
+ some development concepts which have been evolved in praxis. Setting up a 
+ development toolchain based on puppet/rpm can be one solution for dependen
+ y problems.  For those who are in the BSD worlds\, the talk will explain h
+ ow to use the NetBSD pkgsrc tree for software deployment.
+DTEND;TZID=Europe/London:20121124T121000
+DTSTART;TZID=Europe/London:20121124T112000
+LOCATION:Booking Theatre L2 2
+ORGANIZER:Ulrich Habel
+SUMMARY:Deployment - there is no single server
+UID:http://act.yapc.eu/lpw2012/talk/4371
+URL:http://act.yapc.eu/lpw2012/talk/4371
+END:VEVENT
+BEGIN:VEVENT
+ATTENDEE:Nicholas Clark
+ATTENDEE:Gianni Ceccarelli
+ATTENDEE:Aaron Crane
+ATTENDEE:David Dorward
+ATTENDEE:David Cantrell
+ATTENDEE:Søren Lund
+ATTENDEE:Jess Robinson
+ATTENDEE:James Mastros
+ATTENDEE:Chad Hanna
+ATTENDEE:Michael Jemmeson
+ATTENDEE:Michele Beltrame
+ATTENDEE:James Laver
+ATTENDEE:Peter Haworth
+ATTENDEE:fifi
+ATTENDEE:Colin Bradford
+ATTENDEE:Tomasz Czepiel
+ATTENDEE:Adam Taylor
+ATTENDEE:Anthony Shaper
+ATTENDEE:Colin Campbell
+ATTENDEE:Paul Evans
+ATTENDEE:Chris Jack
+ATTENDEE:Mallory van Achterberg
+ATTENDEE:Jerome Eteve
+ATTENDEE:Jan Hartung
+ATTENDEE:Andrew Jones
+ATTENDEE:Tudor Constantin
+ATTENDEE:Neil Bowers
+ATTENDEE:Andrew Todd
+ATTENDEE:Mike Francis
+ATTENDEE:Brad Haywood
+ATTENDEE:Graeme Hewson
+ATTENDEE:Johnathan Swan
+ATTENDEE:Tudor Crisan
+ATTENDEE:Alexandru Strajeriu
+ATTENDEE:Hugh Barnard
+ATTENDEE:Neil Kirsopp
+ATTENDEE:Andy Jones
+ATTENDEE:Ben Rogers
+ATTENDEE:Amalia Pomian
+ATTENDEE:Pete Barlow
+ATTENDEE:Daniel De Ruvo
+ATTENDEE:Bruno Hemeury
+ATTENDEE:Christopher Weatherby
+ATTENDEE:kevin mulholland
+ATTENDEE:John Goodchild
+COMMENT:45 attendees
+DESCRIPTION:Multi-paradigm languages like Perl can absorb programming pract
+ ices from all over the programming map and the more languages you have at 
+ least a nodding acquaintance with\, the more ways you have to crack your p
+ articular nut\, skin your particular cat\, or carve up the turkey of a pro
+ blem you’ve been presented.\n\nI’ll discuss some techniques and ideas I’ve
+  stolen from my messing about with other languages\, and show you how to c
+ ultivate your own plundering habits.\n\nThis talk will not be delivered wh
+ ile talking like a pirate for forty minutes. It will\, however\, be delive
+ red while bearded.
+DTEND;TZID=Europe/London:20121124T105000
+DTSTART;TZID=Europe/London:20121124T100000
+LOCATION:Bytemark Theatre: L1 1
+ORGANIZER:Piers Cawley
+SUMMARY:YARRR! Plunderin' Programming' Paradigms Fer Profit!
+UID:http://act.yapc.eu/lpw2012/talk/4413
+URL:http://act.yapc.eu/lpw2012/talk/4413
+END:VEVENT
+BEGIN:VEVENT
+ATTENDEE:Gianni Ceccarelli
+ATTENDEE:Søren Lund
+ATTENDEE:Marco Fontani
+ATTENDEE:Nigel Metheringham
+ATTENDEE:Michele Beltrame
+ATTENDEE:Victor Churchill
+ATTENDEE:James Laver
+ATTENDEE:Peter Haworth
+ATTENDEE:fifi
+ATTENDEE:Peter Rabbitson
+ATTENDEE:Tomasz Czepiel
+ATTENDEE:Chris Jack
+ATTENDEE:Phil Quinn
+ATTENDEE:Anatolie Mazur
+ATTENDEE:lena-san
+ATTENDEE:James Aitken
+ATTENDEE:Andrew Jones
+ATTENDEE:James Ronan
+ATTENDEE:Tudor Constantin
+ATTENDEE:Andrew Todd
+ATTENDEE:kevin dawson
+ATTENDEE:pierre masci
+ATTENDEE:Mirela Iclodean
+ATTENDEE:Tudor Crisan
+ATTENDEE:anca grosan
+ATTENDEE:Andreea Stanciu
+ATTENDEE:Istvan Gal
+ATTENDEE:Anthony Lucas
+ATTENDEE:Alexandru Strajeriu
+ATTENDEE:Russell Wheeler
+ATTENDEE:Andy Jones
+ATTENDEE:Iain Campbell
+ATTENDEE:Merlyn Kline
+ATTENDEE:Ben Rogers
+ATTENDEE:Michael Woods
+ATTENDEE:Amalia Pomian
+ATTENDEE:Diana Nutu
+ATTENDEE:Diana Donca
+ATTENDEE:Florentina Borse
+ATTENDEE:Adela Codrea
+ATTENDEE:Dumitru Negrea
+ATTENDEE:Viv Noord
+ATTENDEE:p artus
+ATTENDEE:Bruno Hemeury
+ATTENDEE:Mircea Patachi
+ATTENDEE:kevin mulholland
+COMMENT:46 attendees
+DESCRIPTION:Small but useful applications\, implemented with rapidity\, ins
+ tallable with alacrity\, rich in manipulexity - a world of possibilities .
+ ..
+DTEND;TZID=Europe/London:20121124T160000
+DTSTART;TZID=Europe/London:20121124T151000
+LOCATION:Bytemark Theatre: L1 1
+ORGANIZER:Matt S Trout
+SUMMARY:Fast\, furious\, fatpacked and fun
+UID:http://act.yapc.eu/lpw2012/talk/4433
+URL:http://act.yapc.eu/lpw2012/talk/4433
+END:VEVENT
+BEGIN:VEVENT
+ATTENDEE:osfameron
+ATTENDEE:Jess Robinson
+ATTENDEE:James Mastros
+ATTENDEE:James Laver
+ATTENDEE:fifi
+ATTENDEE:Colin Bradford
+ATTENDEE:Anthony Shaper
+ATTENDEE:Paul Evans
+ATTENDEE:Minty Walker
+ATTENDEE:Mallory van Achterberg
+ATTENDEE:Andrew Jones
+ATTENDEE:Mike Francis
+ATTENDEE:Andreea Stanciu
+ATTENDEE:Istvan Gal
+ATTENDEE:Anthony Lucas
+ATTENDEE:Alexandru Strajeriu
+ATTENDEE:Michael Woods
+ATTENDEE:Diana Donca
+ATTENDEE:Florentina Borse
+ATTENDEE:Adela Codrea
+ATTENDEE:Dheeraj Uppalapati
+ATTENDEE:Daniel De Ruvo
+ATTENDEE:Bruno Hemeury
+ATTENDEE:Mircea Patachi
+ATTENDEE:Eduardo Pato Rodrigues
+COMMENT:25 attendees
+DESCRIPTION:A look at how to handle asynchronous event-based code using Fut
+ ures\, and CPS::Future
+DTEND;TZID=Europe/London:20121124T095000
+DTSTART;TZID=Europe/London:20121124T093000
+LOCATION:Booking Theatre L2 2
+ORGANIZER:Paul Evans
+SUMMARY:The Past\, The Present and The Future
+UID:http://act.yapc.eu/lpw2012/talk/4441
+URL:http://act.yapc.eu/lpw2012/talk/4441
+END:VEVENT
+END:VCALENDAR
