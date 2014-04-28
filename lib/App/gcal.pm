@@ -103,6 +103,7 @@ sub _save_to_gcal {
         # login
         require Net::Google::Calendar;
         $gcal = Net::Google::Calendar->new;
+        $gcal->ssl("true");
         $gcal->login( $username, $password );
     }
 
