@@ -2,3 +2,4 @@
 .*redcar/
 .build
 App-gcal-*
+.DS_Store
